@@ -40,7 +40,6 @@ module Intercom
       opts = Slop.parse args, suppress_errors: true do |o|
         o.banner = <<-TEXT.unindent
           A program that reads the full list of customers from STDIN and outputs the names and user ids of matching customers, sorted by user id (ascending).
-
           The input must consists of one customer per line, JSON-encoded, eg.:
               {"latitude": "52.986375", "user_id": 12, "name": "Christina McArdle", "longitude": "-6.043701"}
               {"latitude": "51.92893", "user_id": 1, "name": "Alice Cahill", "longitude": "-10.27699"}

@@ -14,6 +14,6 @@ The input must consists of one customer per line, JSON-encoded, eg.:
 
 ## Usage
 
-    intercom_ex2_customer_invitation --help
     intercom_ex2_customer_invitation --radius 100 < customers.txt # for Intercom office location
     intercom_ex2_customer_invitation --location 53.3381985,-6.2592576 --radius 100 < customers.txt
+    intercom_ex2_customer_invitation --help
