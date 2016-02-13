@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'slop'
+require 'intercom/ex2'
+require 'intercom/ex2/location'
+
+require 'intercom/ex2'
+Intercom::Ex2.run
