@@ -37,31 +37,24 @@ module Intercom
     def self.run args: ARGV, customers_stream: $stdin, output_stream: $stdout
       # DEFAULT_RADIUS = 100
 
-      opts = begin
-        Slop.parse args, suppress_errors: true do |o|
-          o.banner = <<-BANNER.unindent
-            A program that reads the full list of customers from STDIN and outputs the names and user ids of matching customers (within radius), sorted by user id (ascending).
+      opts = Slop.parse args, suppress_errors: true do |o|
+        o.banner = <<-TEXT.unindent
+          A program that reads the full list of customers from STDIN and outputs the names and user ids of matching customers, sorted by user id (ascending).
 
-            STDIN input must be a text file with a JSON-formatted customer per per line, eg.:
+          The input must consists of one customer per line, JSON-encoded, eg.:
               {"latitude": "52.986375", "user_id": 12, "name": "Christina McArdle", "longitude": "-6.043701"}
               {"latitude": "51.92893", "user_id": 1, "name": "Alice Cahill", "longitude": "-10.27699"}
+        TEXT
 
-            USAGE:
-              intercom_ex2_customer_invitation < customers.txt
-              intercom_ex2_customer_invitation --radius 100 < customers.txt # for Intercom office location
-              intercom_ex2_customer_invitation --location 53.339371,-6.259684 --radius 100 < customers.txt
-          BANNER
-
-          o.separator ""
-          o.string '--location', "A center of a location in a format of latitude,longitude (default: #{ DEFAULT_LOCATION }).", default: DEFAULT_LOCATION
-          o.integer '--radius', "Show customers within a radius in km." # (default: #{ DEFAULT_RADIUS }.", default: DEFAULT_RADIUS
-          o.bool '--verbose'
-          o.on '--version', 'Print the version.' do
-            output.puts Intercom::Ex2::VERSION
-            exit
-          end
-          o.on '--help'
+        o.separator "OPTIONS:"
+        o.string '--location', "A center of a location in a format of latitude,longitude (default: #{ DEFAULT_LOCATION }).", default: DEFAULT_LOCATION
+        o.integer '--radius', "Show customers within a radius in km." # (default: #{ DEFAULT_RADIUS }.", default: DEFAULT_RADIUS
+        o.bool '--verbose'
+        o.on '--version', 'Print the version.' do
+          output.puts Intercom::Ex2::VERSION
+          exit
         end
+        o.on '--help'
       end
 
       if opts[:location] && opts[:radius]
@@ -73,8 +66,13 @@ module Intercom
         end
       else
         output_stream.puts opts
+        output_stream.puts "", <<-TEXT.unindent
+          EXAMPLES:
+              intercom_ex2_customer_invitation < customers.txt
+              intercom_ex2_customer_invitation --radius 100 < customers.txt # for Intercom office location
+              intercom_ex2_customer_invitation --location 53.339371,-6.259684 --radius 100 < customers.txt
+        TEXT
       end
-
     end
   end
 end
