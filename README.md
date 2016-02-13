@@ -1,4 +1,4 @@
-# Intercom::Ex2::Customers
+# Intercom customer invitation script
 
 A program that will read the full list of customers from STDIN and output the names and user ids of matching customers (within radius in km), sorted by user id (ascending).
 
