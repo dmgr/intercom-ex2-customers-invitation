@@ -8,17 +8,9 @@ STDIN input must be a text file with a JSON-formatted customer per per line, eg.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'intercom-ex2-customers-invitation'
-
-And then execute:
-
+    $ git clone 'https://github.com/dmgr/intercom-ex2-customers-invitation.git'
+    $ cd intercom-ex2-customers-invitation
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install intercom-ex2-customers-invitation
 
 ## Usage
 
