@@ -1,8 +1,7 @@
-# Intercom customer invitation script
+# Intercom customers invitation script
 
-A program that will read the full list of customers from STDIN and output the names and user ids of matching customers (within radius in km), sorted by user id (ascending).
-
-STDIN input must be a text file with a JSON-formatted customer per per line, eg.:
+A program that reads the full list of customers from STDIN and outputs the names and user ids of matching customers, sorted by user id (ascending).
+The input must consists of one customer per line, JSON-encoded, eg.:
 
     {"latitude": "52.986375", "user_id": 12, "name": "Christina McArdle", "longitude": "-6.043701"}
     {"latitude": "51.92893", "user_id": 1, "name": "Alice Cahill", "longitude": "-10.27699"}
