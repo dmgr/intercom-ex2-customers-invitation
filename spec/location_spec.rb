@@ -9,22 +9,22 @@ RSpec.describe Intercom::Ex2::Location do
     let(:santiago_location) { Intercom::Ex2::Location.new -33.4724228, -70.7699136 }
 
     context 'distance between Dublin-Cork and Cork-Dublin' do
-      it "should be the same" do
+      it "is the same" do
         expect(cork_location.distance_to(dublin_location)).to eq dublin_location.distance_to(cork_location)
       end
 
-      it "should be ~220 km" do
+      it "is ~220 km" do
         distance = 220_403
         expect(cork_location.distance_to(dublin_location)).to be_within(distance * DISTANCE_TOLERANCE).of(distance)
       end
     end
 
     context 'distance between Dublin-Santiago and Santiago-Dublin' do
-      it "should be the same" do
+      it "is the same" do
         expect(dublin_location.distance_to(santiago_location)).to eq santiago_location.distance_to(dublin_location)
       end
 
-      it "should be ~11477 km" do
+      it "is ~11477 km" do
         distance = 11_476_837
         expect(dublin_location.distance_to(santiago_location)).to be_within(distance * DISTANCE_TOLERANCE).of(distance)
       end
